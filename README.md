@@ -1,10 +1,9 @@
 # ASTRE-8
 
-**Automatic SoundTrack Extender 8** — an offline Kotlin/Android library that
+**Automatic SoundTrack Extender 8**, an offline Kotlin/Android library that
 extends music by finding and repeating a suitable musical passage.
 
-Extracted from the version 8 extender in Muzbox. ASTRE-8 analyzes existing
-audio; it does not generate new music or call an AI service. This repository
+ASTRE-8 analyzes existing audio; it does not generate new music or call an AI service. This repository
 contains the engine and its tests, rather than a standalone player application.
 
 ## What it does
