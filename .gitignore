@@ -12,3 +12,8 @@ local.properties
 *.pcm
 *.wav
 *.part
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+.venv/

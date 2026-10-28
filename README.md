@@ -1,10 +1,31 @@
 # ASTRE-8
 
-**Automatic SoundTrack Extender 8**, an offline Kotlin/Android library that
-extends music by finding and repeating a suitable musical passage.
+**Automatic SoundTrack Extender 8** extends music offline by finding and repeating
+a suitable musical passage. It includes an Android/Kotlin library and a portable
+Python library and command-line tool for Windows, macOS, and Linux.
 
-ASTRE-8 analyzes existing audio; it does not generate new music or call an AI service. This repository
-contains the engine and its tests, rather than a standalone player application.
+Extracted from the version 8 extender in Muzbox. ASTRE-8 analyzes existing
+audio; it does not generate new music or call an AI service. This repository
+contains both engine implementations, examples, and their tests.
+
+## Portable version: Windows, macOS, Linux
+
+Install Python 3.10+ and run from the repository root:
+
+```sh
+python -m pip install ./portable
+python -m astre8 input.wav output.wav --duration 600
+python -m astre8 input.wav --analyze --diagnostics
+```
+
+PCM16 WAV works with Python and NumPy. Install FFmpeg separately for FLAC, Ogg,
+MP3 and other codecs. `--duration` is total output length in seconds. Manual
+loop points are available through `--start` and `--end`. See
+[the portable guide](portable/README.md) for API usage, limits, and test commands.
+
+The portable detector translates the version 8 rules. Shared-fixture comparisons
+against Kotlin check decisions, loop periods and boundaries; WAV rendering is
+compared byte for byte. See [validation](VALIDATION.md) for measured results.
 
 ## What it does
 
@@ -17,7 +38,7 @@ contains the engine and its tests, rather than a standalone player application.
   bounded source buffers.
 - Supports cancellation and progress callbacks during decoding and rendering.
 
-## Build
+## Android version: build
 
 Requirements: JDK 17, Android SDK platform 35, and accepted Android SDK licenses.
 Set `ANDROID_HOME` to your SDK installation, or create a local `local.properties`
@@ -26,7 +47,7 @@ file containing `sdk.dir=/path/to/android-sdk` (use forward slashes on Windows).
 ```sh
 git clone https://github.com/fdwgg/ASTRE-8.git
 cd ASTRE-8
-./gradlew testDebugUnitTest lintRelease assembleRelease
+bash ./gradlew testDebugUnitTest lintRelease assembleRelease
 ```
 
 On Windows run `gradlew.bat testDebugUnitTest lintRelease assembleRelease`.
@@ -34,7 +55,7 @@ The wrapper downloads Gradle 8.9 and the build resolves its dependencies on the
 first run. The library is written to `build/outputs/aar/ASTRE-8-release.aar`.
 Minimum Android version: **8.0 (API 26)**.
 
-## Integrate
+## Android integration
 
 Copy the release AAR into your Android application's `libs` folder and add:
 
@@ -111,11 +132,17 @@ Engine classes retain their existing names for a small, auditable extraction.
 
 ## Tests
 
-The extracted regression suites cover complete musical forms, false matches,
+The Android regression suites cover complete musical forms, false matches,
 single-pass inference, cancellation, metadata bounds, sample-accurate authored
 loops, seam refinement, arbitrary seeks, output length, and byte-for-byte
 comparison of streaming rendering with a reference renderer. GitHub Actions
-builds, tests, and lints the library.
+builds, tests, and lints the Android library. Portable tests run in a separate
+Windows/macOS/Linux matrix, including real compressed-file decoding.
+
+```sh
+python -m pip install './portable[test]'
+python -m unittest discover -s portable -v
+```
 
 ## License
 
