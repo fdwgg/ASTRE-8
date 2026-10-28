@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "astre8"
+version = "8.0.0"
+description = "Automatic SoundTrack Extender 8 — portable audio loop analysis and WAV rendering"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+test = ["imageio-ffmpeg>=0.6"]
+
+[project.scripts]
+astre8 = "astre8:main"
+
+[tool.setuptools]
+py-modules = ["astre8", "astre8_detector", "astre8_metadata"]
