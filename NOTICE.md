@@ -1,6 +1,6 @@
 # Source and third-party notices
 
-ASTRE-8 extracts the version 8 song extender from Muzbox. The initial extraction
+ASTRE-8 extracts the version 8 song extender from my personal music app. The initial extraction
 keeps the four engine source files and seven regression test files unchanged
 except for their package declaration (`io.github.fdwgg.astre8`). The new project
 build, documentation, and integration example are specific to this release.
