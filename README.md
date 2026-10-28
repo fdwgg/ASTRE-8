@@ -1,6 +1,6 @@
 # ASTRE-8
 
-**Automatic SoundTrack Extender 8** extends music offline by finding and repeating
+**Automatic SoundTRack Extender 8** extends music offline by finding and repeating
 a suitable musical passage. It includes an Android/Kotlin library and a portable
 Python library and command-line tool for Windows, macOS, and Linux.
 
