@@ -44,7 +44,7 @@ Command: `gradle testDebugUnitTest lintRelease assembleRelease`.
 - Android lint: 0 errors, 2 warnings. The warnings concern the deliberately
   retained Android Gradle plugin version and the existing free-space check using
   `File.usableSpace`.
-- All four extracted engine files match the original Muzbox version 8 source
+- All four extracted engine files match my (currently private) music app's version 8 source
   after replacing only the package declaration.
 - Fixtures are synthetic; no personal audio or application data is distributed.
 
