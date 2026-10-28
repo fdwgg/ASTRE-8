@@ -4,7 +4,7 @@
 a suitable musical passage. It includes an Android/Kotlin library and a portable
 Python library and command-line tool for Windows, macOS, and Linux.
 
-Extracted from the version 8 extender in Muzbox. ASTRE-8 analyzes existing
+Extracted from the version 8 extender in my unreleased music app project. ASTRE-8 analyzes existing
 audio; it does not generate new music or call an AI service. This repository
 contains both engine implementations, examples, and their tests.
 
